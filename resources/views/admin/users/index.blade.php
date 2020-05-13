@@ -42,8 +42,8 @@
 
     <div class="formbox">
         <span class="passlabel">Password</span>
-        <input type="password" placeholder="Insert your password here..." id="myPass">
-        <span id="showPass" onclick="toggle()">
+        <input type="password" placeholder="Insert password" id="myPass">
+        <span id="showPass" onclick="revealPassword()">
             <i class="fas fa-eye" onclick="myFunction(this)"></i>
         </span>
     </div>
@@ -101,7 +101,27 @@
         margin-left: -40px;
     }
 
-
 </style>
+
+<script type="text/javascript">
+var state = false;
+
+function revealPassword(){
+    if(state == true){
+        // <input type="password">
+        document.getElementById("myPass").setAttribute("type", "password");
+        state = false;
+    }else{
+        // <input type="text">
+        document.getElementById("myPass").setAttribute("type", "text");
+        state = true;
+    }
+}
+
+function myFunction(show){
+    show.classList.toggle('fa-eye-slash');
+}
+
+</script>
 
 @stop
