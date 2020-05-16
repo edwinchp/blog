@@ -19,7 +19,7 @@
 
 <div class="form-group">
     {!! Form::label('role_id', 'Role')!!}
-    {!! Form::text('role_id', null, ['class'=>'form-control', 'autocomplete' => 'off', 'required'])!!}
+    {!! Form::select('role_id',['' => 'Chose options...'] + $roles, null, ['class'=>'form-control'])!!}
 </div>
 
 <div class="form-group">
