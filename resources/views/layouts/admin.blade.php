@@ -84,10 +84,10 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">New user</a>
+                                        <a href="{{route('users.create')}}">New user</a>
                                     </li>
                                     <li>
-                                        <a href="#">All users</a>
+                                        <a href="{{route('users.index')}}">All users</a>
                                     </li>
                                 </ul>
                             </div>
