@@ -6,6 +6,7 @@ use App\Http\Requests\UsersRequest;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Photo;
 
 class AdminUsersController extends Controller
 {
@@ -40,8 +41,17 @@ class AdminUsersController extends Controller
     public function store(UsersRequest $request)
     {
         $input = $request->all();
-        if($request->file('photo_id')){
-            return "Photo exists";
+        if($file = $request->file('photo_id')){
+            $name = time().$file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file' => $name]);
+            $input['photo_id'] = $photo->id;
+
+
+            echo "<br>name: " .$name;
+            echo "<br>photo: " . $photo;
+            echo "<br>input: " .json_encode($input);
+            echo "<br>file: " .$file;
         }else{
             return "Photo does not exist";
         }
