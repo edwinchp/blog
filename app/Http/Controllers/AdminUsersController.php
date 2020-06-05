@@ -48,13 +48,17 @@ class AdminUsersController extends Controller
             $input['photo_id'] = $photo->id;
 
 
-            echo "<br>name: " .$name;
-            echo "<br>photo: " . $photo;
-            echo "<br>input: " .json_encode($input);
-            echo "<br>file: " .$file;
-        }else{
-            return "Photo does not exist";
+            // echo "<br>name: " .$name;
+            // echo "<br>photo: " . $photo;
+            // echo "<br>input: " .json_encode($input);
+            // echo "<br>file: " .$file;
         }
+
+        $input['password'] = bcrypt($request->password);
+
+        User::create($input);
+
+
     }
 
     /**
